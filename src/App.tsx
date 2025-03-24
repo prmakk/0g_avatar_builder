@@ -2,7 +2,7 @@ import "./index.css";
 import { useRef, useState, useEffect } from "react";
 import * as fabric from "fabric";
 import toast, { Toaster } from "react-hot-toast";
-import { Download, Eraser } from "lucide-react";
+import { Download, Eraser, TwitterIcon } from "lucide-react";
 import Assets from "./components/Assets";
 
 function App() {
@@ -102,11 +102,12 @@ function App() {
     const handleClearCanvas = () => {
         if (canvas) {
             canvas.clear();
+            setImageFile(null);
         }
     };
 
     return (
-        <main className="min-h-screen bg-gradient-to-l from-[#FFA18F] via-[#B14EFF] to-[#3BADFF]">
+        <main className="relative min-h-screen bg-gradient-to-l from-[#FFA18F] via-[#B14EFF] to-[#3BADFF]">
             <Toaster position="top-right" />
             <div className="max-w-5xl mx-auto pt-10">
                 <header className="flex justify-center py-4 rounded-2xl bg-white/30 backdrop-blur-sm">
@@ -174,6 +175,15 @@ function App() {
                         <Assets addAsset={addAsset} />
                     </div>
                 )}
+            </div>
+
+            <div className="absolute bottom-5 right-5">
+                <a href="https://x.com/prmakk" target="_blank">
+                    <TwitterIcon
+                        className="text-slate-700 hover:text-purple transition-all hover:scale-110"
+                        size={35}
+                    />
+                </a>
             </div>
         </main>
     );
