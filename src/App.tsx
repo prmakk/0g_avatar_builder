@@ -3,6 +3,7 @@ import { useRef, useState, useEffect } from "react";
 import * as fabric from "fabric";
 import toast, { Toaster } from "react-hot-toast";
 import { Download, Eraser } from "lucide-react";
+import Assets from "./components/Assets";
 
 function App() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -126,20 +127,18 @@ function App() {
                     </div>
                 </header>
 
-                {!isImageAdded && (
-                    <div className="max-w-full flex justify-center items-center mt-20">
-                        <div>
-                            <input
-                                className="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-100"
-                                aria-describedby="file_input_help"
-                                id="file_input"
-                                type="file"
-                                accept="image/*"
-                                onChange={handleAddImage}
-                            />
-                        </div>
+                <div className="max-w-full flex justify-center items-center mt-10">
+                    <div>
+                        <input
+                            className="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-100"
+                            aria-describedby="file_input_help"
+                            id="file_input"
+                            type="file"
+                            accept="image/*"
+                            onChange={handleAddImage}
+                        />
                     </div>
-                )}
+                </div>
 
                 {isImageAdded && (
                     <div className="p-10 flex justify-between gap-6">
@@ -172,68 +171,7 @@ function App() {
                             </div>
                         </div>
 
-                        <div className="flex-1/2">
-                            <h2 className="text-center text-2xl font-bold text-white pb-2">
-                                Assets
-                            </h2>
-
-                            <div className="flex flex-wrap gap-4">
-                                <button
-                                    onClick={() =>
-                                        addAsset("0g_glasses.png", "Glasses")
-                                    }
-                                    className="cursor-pointer hover:bg-purple-300 transition-all bg-white p-3 rounded-2xl aspect-square flex flex-col justify-around"
-                                >
-                                    <img
-                                        src="/0g_glasses.png"
-                                        alt="glasses"
-                                        className="max-w-25"
-                                    />
-                                </button>
-                                <button
-                                    onClick={() =>
-                                        addAsset(
-                                            "0G_gradient_logo.png",
-                                            "Gradient logo"
-                                        )
-                                    }
-                                    className="cursor-pointer hover:bg-purple-300 transition-all bg-white p-3 rounded-2xl aspect-square flex flex-col justify-around"
-                                >
-                                    <img
-                                        src="/0G_gradient_logo.png"
-                                        alt="logo"
-                                        className="max-w-25"
-                                    />
-                                </button>
-                                <button
-                                    onClick={() =>
-                                        addAsset("0g-Panda.png", "Panda")
-                                    }
-                                    className="cursor-pointer hover:bg-purple-300 transition-all bg-white p-3 rounded-2xl aspect-square flex flex-col justify-around"
-                                >
-                                    <img
-                                        src="/0g-Panda.png"
-                                        alt="logo"
-                                        className="max-w-25"
-                                    />
-                                </button>
-                                <button
-                                    onClick={() =>
-                                        addAsset(
-                                            "panda_flying.png",
-                                            "Flying panda"
-                                        )
-                                    }
-                                    className="cursor-pointer hover:bg-purple-300 transition-all bg-white p-3 rounded-2xl aspect-square flex flex-col justify-around"
-                                >
-                                    <img
-                                        src="/panda_flying.png"
-                                        alt="panda"
-                                        className="max-w-25"
-                                    />
-                                </button>
-                            </div>
-                        </div>
+                        <Assets addAsset={addAsset} />
                     </div>
                 )}
             </div>
