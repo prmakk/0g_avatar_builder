@@ -44,7 +44,7 @@ function App() {
         }
     }, [canvas, imageFile]);
 
-    const handleAddImage = (e) => {
+    const handleAddImage = (e: any) => {
         const file = e.target.files[0];
 
         if (!file) {
