@@ -1,6 +1,8 @@
 import "./index.css";
 import { useRef, useState, useEffect } from "react";
 import * as fabric from "fabric";
+import toast, { Toaster } from "react-hot-toast";
+import { Download, Eraser } from "lucide-react";
 
 function App() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -53,9 +55,7 @@ function App() {
         setIsImageAdded(true);
     };
 
-    const addGlasses = () => {
-        const imageUrl = "/0g_glasses.png";
-
+    const addAsset = (imageUrl: string, assetName: string) => {
         const imageElement = new Image();
         imageElement.src = imageUrl;
 
@@ -63,6 +63,7 @@ function App() {
             const fabricImage = new fabric.Image(imageElement);
 
             if (canvas) {
+                toast.success(`${assetName} added`);
                 canvas.add(fabricImage);
                 canvas.bringObjectToFront(fabricImage);
                 canvas.centerObject(fabricImage);
@@ -78,6 +79,7 @@ function App() {
     ) => {
         if (!canvas) {
             console.error("Canvas not initialized.");
+            toast.error("Something went wrong");
             return;
         }
 
@@ -93,6 +95,7 @@ function App() {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+        toast.success("Image downloaded successfully");
     };
 
     const handleClearCanvas = () => {
@@ -103,13 +106,23 @@ function App() {
 
     return (
         <main className="min-h-screen bg-gradient-to-l from-[#FFA18F] via-[#B14EFF] to-[#3BADFF]">
+            <Toaster position="top-right" />
             <div className="max-w-5xl mx-auto pt-10">
                 <header className="flex justify-center py-4 rounded-2xl bg-white/30 backdrop-blur-sm">
-                    <div className="flex flex-col gap-5 items-center justify-center">
+                    <div className="flex flex-col items-center justify-center">
                         <img src="/logo.svg" alt="logo" className="max-w-40" />
-                        <h1 className="font-semibold text-4xl text-white">
+                        <h1 className="font-semibold text-4xl text-white pt-4">
                             OG AVATAR BUILDER
                         </h1>
+                        <p className="pt-4 text-sm text-white/80">
+                            by{" "}
+                            <a
+                                href="https://x.com/prmakk"
+                                className="underline"
+                            >
+                                prmakk
+                            </a>
+                        </p>
                     </div>
                 </header>
 
@@ -129,25 +142,98 @@ function App() {
                 )}
 
                 {isImageAdded && (
-                    <div className="p-10 flex justify-center items-center">
-                        <canvas ref={canvasRef} className="border-2" />
-                        <button onClick={handleClearCanvas}>Clear</button>
-                        <button
-                            onClick={addGlasses}
-                            className="cursor bg-red-400"
-                        >
-                            Glasses
-                        </button>
-                        <button
-                            onClick={() =>
-                                saveCanvasAsImage(
-                                    canvas!,
-                                    "my_canvas_image.png"
-                                )
-                            }
-                        >
-                            Download👓
-                        </button>
+                    <div className="p-10 flex justify-between gap-6">
+                        <div className="flex flex-col flex-1/2 gap-4 justify-center items-center">
+                            <canvas
+                                ref={canvasRef}
+                                className="border-dashed border-1 border-amber-50 rounded-2xl"
+                            />
+
+                            <div className="flex justify-around w-full">
+                                <button
+                                    onClick={() =>
+                                        saveCanvasAsImage(
+                                            canvas!,
+                                            "my_canvas_image.png"
+                                        )
+                                    }
+                                    className="flex gap-1 items-center bg-white px-6 py-2 rounded-2xl hover:bg-purple hover:text-white cursor-pointer transition-all"
+                                >
+                                    Download
+                                    <Download size={20} />
+                                </button>
+                                <button
+                                    onClick={handleClearCanvas}
+                                    className="flex gap-1 items-center bg-white px-6 py-2 rounded-2xl hover:bg-purple hover:text-white cursor-pointer transition-all"
+                                >
+                                    Clear
+                                    <Eraser size={20} />
+                                </button>
+                            </div>
+                        </div>
+
+                        <div className="flex-1/2">
+                            <h2 className="text-center text-2xl font-bold text-white pb-2">
+                                Assets
+                            </h2>
+
+                            <div className="flex flex-wrap gap-4">
+                                <button
+                                    onClick={() =>
+                                        addAsset("0g_glasses.png", "Glasses")
+                                    }
+                                    className="cursor-pointer hover:bg-purple-300 transition-all bg-white p-3 rounded-2xl aspect-square flex flex-col justify-around"
+                                >
+                                    <img
+                                        src="/0g_glasses.png"
+                                        alt="glasses"
+                                        className="max-w-25"
+                                    />
+                                </button>
+                                <button
+                                    onClick={() =>
+                                        addAsset(
+                                            "0G_gradient_logo.png",
+                                            "Gradient logo"
+                                        )
+                                    }
+                                    className="cursor-pointer hover:bg-purple-300 transition-all bg-white p-3 rounded-2xl aspect-square flex flex-col justify-around"
+                                >
+                                    <img
+                                        src="/0G_gradient_logo.png"
+                                        alt="logo"
+                                        className="max-w-25"
+                                    />
+                                </button>
+                                <button
+                                    onClick={() =>
+                                        addAsset("0g-Panda.png", "Panda")
+                                    }
+                                    className="cursor-pointer hover:bg-purple-300 transition-all bg-white p-3 rounded-2xl aspect-square flex flex-col justify-around"
+                                >
+                                    <img
+                                        src="/0g-Panda.png"
+                                        alt="logo"
+                                        className="max-w-25"
+                                    />
+                                </button>
+                                <button
+                                    onClick={() =>
+                                        addAsset(
+                                            "panda_flying.png",
+                                            "Flying panda"
+                                        )
+                                    }
+                                    className="cursor-pointer hover:bg-purple-300 transition-all bg-white p-3 rounded-2xl aspect-square flex flex-col justify-around"
+                                >
+                                    <img
+                                        src="/panda_flying.png"
+                                        alt="panda"
+                                        className="max-w-25"
+                                    />
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 )}
             </div>
