@@ -1,54 +1,51 @@
-# React + TypeScript + Vite
+# 0G Labs avatar builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The first decentralized AI operating system. The largest AI Layer 1 ecosystem. Infinitely scalable for AI. Performant for everyone.
 
-Currently, two official plugins are available:
+## Screenshots
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![App Screenshot](https://i.imgur.com/dzt9bP3.jpeg)
 
-## Expanding the ESLint configuration
+## Run Locally
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Clone the project
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+  git clone https://github.com/prmakk/transformix.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Go to the project directory
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+  cd my-project
 ```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run dev
+```
+
+## FAQ
+
+#### Is this tool free to use?
+
+Yes, this tool is completely free and open-source. You can use it for personal or educational purposes without any restrictions.
+
+#### What browsers are supported?
+
+This tool should work on all modern browsers, including Chrome, Firefox, Safari, and Edge. For the best experience, ensure your browser is up to date.
+
+#### Do you store any information?
+
+All editing happens on your side and there is no interaction with the server. Also your pictures are not stored anywhere, so download them immediately.
+
+## Tech Stack
+
+**React, Typescript, TailwindCSS**
