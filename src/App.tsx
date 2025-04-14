@@ -142,7 +142,7 @@ function App() {
                 </div>
 
                 {isImageAdded && (
-                    <div className="p-10 flex justify-between gap-6 items-start">
+                    <div className="lg:flex-row lg:items-start p-10 flex flex-col justify-between gap-6 items-center">
                         <div className="flex flex-col flex-1/2 gap-4 justify-center items-center">
                             <canvas
                                 ref={canvasRef}
@@ -154,7 +154,7 @@ function App() {
                                     onClick={() =>
                                         saveCanvasAsImage(
                                             canvas!,
-                                            "my_canvas_image.png"
+                                            "0g_avatar_by_prmak.png"
                                         )
                                     }
                                     className="flex gap-1 items-center bg-white px-6 py-2 rounded-2xl hover:bg-purple hover:text-white cursor-pointer transition-all"
