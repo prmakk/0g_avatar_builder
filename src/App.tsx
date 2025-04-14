@@ -142,7 +142,7 @@ function App() {
                 </div>
 
                 {isImageAdded && (
-                    <div className="p-10 flex justify-between gap-6">
+                    <div className="p-10 flex justify-between gap-6 items-start">
                         <div className="flex flex-col flex-1/2 gap-4 justify-center items-center">
                             <canvas
                                 ref={canvasRef}
