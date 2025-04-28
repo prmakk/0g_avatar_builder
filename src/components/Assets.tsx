@@ -163,6 +163,16 @@ const Assets: FC<IProps> = ({ addAsset }) => {
                         className="max-w-25"
                     />
                 </button>
+                <button
+                    onClick={() => addAsset("/zer0/zer0_6.png", "Pookie girl")}
+                    className="cursor-pointer hover:bg-purple-300 transition-all bg-white p-3 rounded-2xl aspect-square flex flex-col justify-around"
+                >
+                    <img
+                        src="/zer0/zer0_6.png"
+                        alt="girl"
+                        className="max-w-25"
+                    />
+                </button>
             </div>
         </div>
     );
